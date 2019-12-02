@@ -186,6 +186,8 @@ It combines p.value.S.pi and p.value.S.tau by using Fisher's procedure.</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
+
 <span class='no'>sample_size</span> <span class='kw'>&lt;-</span> <span class='fl'>100</span>
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
   <span class='kw'>y_continuous</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>10</span>, <span class='fl'>2</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>10</span>, <span class='fl'>2</span>)),
@@ -220,26 +222,8 @@ It combines p.value.S.pi and p.value.S.tau by using Fisher's procedure.</p></li>
   <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>z_1</span>,
   <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"liu"</span>,
   <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"continuous"</span>
-)</div><div class='output co'>#&gt; <span class='message'>[MiST] Linear regression is ongoing ...</span></div><div class='output co'>#&gt; 
-#&gt; MiST: Mixed effects Score Test
-#&gt; ------------------------------
-#&gt; 
-#&gt; - Estimate:
-#&gt; 
-#&gt;   SubClusters Pi_hat CI_2.5 CI_97.5
-#&gt; 1     cluster   1.39  0.197    2.58
-#&gt; 
-#&gt; - Statistics:
-#&gt; 
-#&gt;   + Overall effect: 
-#&gt;     * P-value = 0.0991
-#&gt;   + PI (mean effect):  
-#&gt;     * Score =  5.13
-#&gt;     * P-value = 0.0236
-#&gt;   + TAU (heterogeneous effect):  
-#&gt;     * Score =  28.2
-#&gt;     * P-value = 0.858
-#&gt; </div><div class='input'>
+)
+
 <span class='fu'>mist</span>(
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>data</span>[, <span class='st'>"y_binary"</span>],
   <span class='kw'>X</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
@@ -247,26 +231,8 @@ It combines p.value.S.pi and p.value.S.tau by using Fisher's procedure.</p></li>
   <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>z_1</span>,
   <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"liu"</span>,
   <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"binary"</span>
-)</div><div class='output co'>#&gt; <span class='message'>[MiST] Logistic regression is ongoing ...</span></div><div class='output co'>#&gt; 
-#&gt; MiST: Mixed effects Score Test
-#&gt; ------------------------------
-#&gt; 
-#&gt; - Estimate:
-#&gt; 
-#&gt;   SubClusters Pi_hat CI_2.5 CI_97.5   OR
-#&gt; 1     cluster   1.67  0.637    2.97 5.34
-#&gt; 
-#&gt; - Statistics:
-#&gt; 
-#&gt;   + Overall effect: 
-#&gt;     * P-value = 0.0105
-#&gt;   + PI (mean effect):  
-#&gt;     * Score =  10.1
-#&gt;     * P-value = 0.00151
-#&gt;   + TAU (heterogeneous effect):  
-#&gt;     * Score =  0.21
-#&gt;     * P-value = 0.91
-#&gt; </div><div class='input'>
+)
+
 
 <span class='co'>## Two clusters</span>
 
@@ -277,27 +243,8 @@ It combines p.value.S.pi and p.value.S.tau by using Fisher's procedure.</p></li>
   <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>z_2</span>,
   <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"liu"</span>,
   <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"continuous"</span>
-)</div><div class='output co'>#&gt; <span class='message'>[MiST] Linear regression is ongoing ...</span></div><div class='output co'>#&gt; 
-#&gt; MiST: Mixed effects Score Test
-#&gt; ------------------------------
-#&gt; 
-#&gt; - Estimate:
-#&gt; 
-#&gt;   SubClusters Pi_hat CI_2.5 CI_97.5
-#&gt; 1    cluster1  1.780  0.176    3.39
-#&gt; 2    cluster2  0.776 -1.270    2.82
-#&gt; 
-#&gt; - Statistics:
-#&gt; 
-#&gt;   + Overall effect: 
-#&gt;     * P-value = 0.228
-#&gt;   + PI (mean effect):  
-#&gt;     * Score =  5.64
-#&gt;     * P-value = 0.0596
-#&gt;   + TAU (heterogeneous effect):  
-#&gt;     * Score =  4.02
-#&gt;     * P-value = 1
-#&gt; </div><div class='input'>
+)
+
 <span class='fu'>mist</span>(
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>data</span>[, <span class='st'>"y_binary"</span>],
   <span class='kw'>X</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
@@ -305,27 +252,8 @@ It combines p.value.S.pi and p.value.S.tau by using Fisher's procedure.</p></li>
   <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>z_2</span>,
   <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"liu"</span>,
   <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"binary"</span>
-)</div><div class='output co'>#&gt; <span class='message'>[MiST] Logistic regression is ongoing ...</span></div><div class='output co'>#&gt; 
-#&gt; MiST: Mixed effects Score Test
-#&gt; ------------------------------
-#&gt; 
-#&gt; - Estimate:
-#&gt; 
-#&gt;   SubClusters Pi_hat CI_2.5 CI_97.5   OR
-#&gt; 1    cluster1   1.51  0.231    3.06 4.51
-#&gt; 2    cluster2   2.04  0.211    5.01 7.68
-#&gt; 
-#&gt; - Statistics:
-#&gt; 
-#&gt;   + Overall effect: 
-#&gt;     * P-value = 0.0309
-#&gt;   + PI (mean effect):  
-#&gt;     * Score =  10.1
-#&gt;     * P-value = 0.00639
-#&gt;   + TAU (heterogeneous effect):  
-#&gt;     * Score =  0.174
-#&gt;     * P-value = 0.764
-#&gt; </div><div class='input'>
+)
+
 
 <span class='co'>## Weighted</span>
 
@@ -340,26 +268,8 @@ It combines p.value.S.pi and p.value.S.tau by using Fisher's procedure.</p></li>
   <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"continuous"</span>,
   <span class='kw'>weight.beta</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>25</span>),
   <span class='kw'>maf</span> <span class='kw'>=</span> <span class='no'>maf</span>
-)</div><div class='output co'>#&gt; <span class='message'>[MiST] Linear regression is ongoing ...</span></div><div class='output co'>#&gt; 
-#&gt; MiST: Mixed effects Score Test
-#&gt; ------------------------------
-#&gt; 
-#&gt; - Estimate:
-#&gt; 
-#&gt;   SubClusters Pi_hat CI_2.5 CI_97.5
-#&gt; 1     cluster   1.39  0.197    2.58
-#&gt; 
-#&gt; - Statistics:
-#&gt; 
-#&gt;   + Overall effect: 
-#&gt;     * P-value = 0.102
-#&gt;   + PI (mean effect):  
-#&gt;     * Score =  5.13
-#&gt;     * P-value = 0.0236
-#&gt;   + TAU (heterogeneous effect):  
-#&gt;     * Score =  3750
-#&gt;     * P-value = 0.892
-#&gt; </div><div class='input'>
+)
+
 <span class='fu'>mist</span>(
   <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>data</span>[, <span class='st'>"y_binary"</span>],
   <span class='kw'>X</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
@@ -369,27 +279,9 @@ It combines p.value.S.pi and p.value.S.tau by using Fisher's procedure.</p></li>
   <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"binary"</span>,
   <span class='kw'>weight.beta</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>25</span>),
   <span class='kw'>maf</span> <span class='kw'>=</span> <span class='no'>maf</span>
-)</div><div class='output co'>#&gt; <span class='message'>[MiST] Logistic regression is ongoing ...</span></div><div class='output co'>#&gt; 
-#&gt; MiST: Mixed effects Score Test
-#&gt; ------------------------------
-#&gt; 
-#&gt; - Estimate:
-#&gt; 
-#&gt;   SubClusters Pi_hat CI_2.5 CI_97.5   OR
-#&gt; 1     cluster   1.67  0.637    2.97 5.34
-#&gt; 
-#&gt; - Statistics:
-#&gt; 
-#&gt;   + Overall effect: 
-#&gt;     * P-value = 0.00989
-#&gt;   + PI (mean effect):  
-#&gt;     * Score =  10.1
-#&gt;     * P-value = 0.00151
-#&gt;   + TAU (heterogeneous effect):  
-#&gt;     * Score =  44.7
-#&gt;     * P-value = 0.854
-#&gt; </div><div class='input'>
-</div></pre>
+)
+
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
