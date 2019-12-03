@@ -83,6 +83,9 @@ including variant characteristic information and using score statistics." />
   </a>
 </li>
 <li>
+  <a href="../articles/MiST.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -186,103 +189,61 @@ It combines p.value.S.pi and p.value.S.tau by using Fisher's procedure.</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
-
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>20191202</span>)
-<span class='no'>sample_size</span> <span class='kw'>&lt;-</span> <span class='fl'>100</span>
-<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>y_continuous</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>10</span>, <span class='fl'>2</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>10</span>, <span class='fl'>2</span>)),
-  <span class='kw'>y_binary</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='no'>sample_size</span> / <span class='fl'>2</span>),
-  <span class='kw'>x_cov1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='no'>sample_size</span>),
-  <span class='kw'>x_cov2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>sample_size</span>, <span class='fl'>25</span>, <span class='fl'>5</span>),
-  <span class='kw'>g_variant1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fl'>0.01</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)),
-  <span class='kw'>g_variant2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fl'>0.01</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)),
-  <span class='kw'>g_variant3</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fl'>0.01</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)),
-  <span class='kw'>g_variant4</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fl'>0.01</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='no'>sample_size</span> / <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fl'>0.05</span>))
-)
-<span class='no'>z_1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>)),
-  <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>), <span class='st'>"cluster"</span>)
-)
-<span class='no'>z_2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
-  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>),
-  <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>)),
-  <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>), <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"cluster"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>))
-)
-
-
-<span class='co'>## One cluster</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>MiST</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>mist_data</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/attach.html'>attach</a></span>(<span class='no'>mist_data</span>)
 
 <span class='fu'>mist</span>(
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>data</span>[, <span class='st'>"y_continuous"</span>],
-  <span class='kw'>X</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>G</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>z_1</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"liu"</span>,
-  <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"continuous"</span>
-)
-
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>phenotypes</span>[, <span class='st'>"y_taupi"</span>],
+  <span class='kw'>X</span> <span class='kw'>=</span> <span class='no'>phenotypes</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>0</span>:<span class='fl'>2</span>)],
+  <span class='kw'>G</span> <span class='kw'>=</span> <span class='no'>genotypes</span>,
+  <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>variants_info</span>[, <span class='fl'>1</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]
+)</div><div class='output co'>#&gt; <span class='message'>[MiST] "y" seems to be "continuous", model is set to "continuous"!</span></div><div class='output co'>#&gt; <span class='message'>[MiST] Linear regression is ongoing ...</span></div><div class='output co'>#&gt; 
+#&gt; MiST: Mixed effects Score Test
+#&gt; ------------------------------
+#&gt; 
+#&gt; - Estimate:
+#&gt; 
+#&gt;   SubClusters Pi_hat CI_2.5 CI_97.5
+#&gt; 1    cluster1  0.248 -0.389   0.885
+#&gt; 
+#&gt; - Statistics:
+#&gt; 
+#&gt;   + Overall effect: 
+#&gt;     * P-value = 0.031
+#&gt;   + PI (mean effect):  
+#&gt;     * Score = 0.601
+#&gt;     * P-value = 0.438
+#&gt;   + TAU (heterogeneous effect):  
+#&gt;     * Score = 1006.125
+#&gt;     * P-value = 0.011
+#&gt; </div><div class='input'>
 <span class='fu'>mist</span>(
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>data</span>[, <span class='st'>"y_binary"</span>],
-  <span class='kw'>X</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>G</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>z_1</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"liu"</span>,
-  <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"binary"</span>
-)
-
-
-<span class='co'>## Two clusters</span>
-
-<span class='fu'>mist</span>(
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>data</span>[, <span class='st'>"y_continuous"</span>],
-  <span class='kw'>X</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>G</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>z_2</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"liu"</span>,
-  <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"continuous"</span>
-)
-
-<span class='fu'>mist</span>(
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>data</span>[, <span class='st'>"y_binary"</span>],
-  <span class='kw'>X</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>G</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>z_2</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"liu"</span>,
-  <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"binary"</span>
-)
-
-
-<span class='co'>## Weighted</span>
-
-<span class='no'>maf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>])) / (<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>data</span>) * <span class='fl'>2</span>)
-
-<span class='fu'>mist</span>(
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>data</span>[, <span class='st'>"y_continuous"</span>],
-  <span class='kw'>X</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>G</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>z_1</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"liu"</span>,
-  <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"continuous"</span>,
-  <span class='kw'>weight.beta</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>25</span>),
-  <span class='kw'>maf</span> <span class='kw'>=</span> <span class='no'>maf</span>
-)
-
-<span class='fu'>mist</span>(
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>data</span>[, <span class='st'>"y_binary"</span>],
-  <span class='kw'>X</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>G</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"g_variant"</span>, <span class='fl'>1</span>:<span class='fl'>4</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]),
-  <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>z_1</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"liu"</span>,
-  <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"binary"</span>,
-  <span class='kw'>weight.beta</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>25</span>),
-  <span class='kw'>maf</span> <span class='kw'>=</span> <span class='no'>maf</span>
-)
-
-}</div></pre>
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>phenotypes</span>[, <span class='st'>"y_binary"</span>],
+  <span class='kw'>X</span> <span class='kw'>=</span> <span class='no'>phenotypes</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x_cov"</span>, <span class='fl'>0</span>:<span class='fl'>2</span>)],
+  <span class='kw'>G</span> <span class='kw'>=</span> <span class='no'>genotypes</span>,
+  <span class='kw'>Z</span> <span class='kw'>=</span> <span class='no'>variants_info</span>[, <span class='fl'>1</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]
+)</div><div class='output co'>#&gt; <span class='message'>[MiST] "y" seems to be "binary", model is set to "binary"!</span></div><div class='output co'>#&gt; <span class='message'>[MiST] Logistic regression is ongoing ...</span></div><div class='output co'>#&gt; 
+#&gt; MiST: Mixed effects Score Test
+#&gt; ------------------------------
+#&gt; 
+#&gt; - Estimate:
+#&gt; 
+#&gt;   SubClusters Pi_hat CI_2.5 CI_97.5    OR
+#&gt; 1    cluster1  1.274   0.66   2.019 3.576
+#&gt; 
+#&gt; - Statistics:
+#&gt; 
+#&gt;   + Overall effect: 
+#&gt;     * P-value = 0
+#&gt;   + PI (mean effect):  
+#&gt;     * Score = 17.527
+#&gt;     * P-value = 0
+#&gt;   + TAU (heterogeneous effect):  
+#&gt;     * Score = 5.4
+#&gt;     * P-value = 0.175
+#&gt; </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

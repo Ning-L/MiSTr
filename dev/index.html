@@ -48,6 +48,9 @@
   </a>
 </li>
 <li>
+  <a href="articles/MiST.html">Get started</a>
+</li>
+<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li>
@@ -94,6 +97,75 @@
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Or the the development version from GitHub:</span></a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># install.packages("remotes")</span></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"mcanouil/MiST"</span>)</a></code></pre></div>
+</div>
+<div id="mist-in-action" class="section level2">
+<h2 class="hasAnchor">
+<a href="#mist-in-action" class="anchor"></a>MiST in Action</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(MiST)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(mist_data)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/attach.html">attach</a></span>(mist_data)</a></code></pre></div>
+<div id="continuous-outcome" class="section level3">
+<h3 class="hasAnchor">
+<a href="#continuous-outcome" class="anchor"></a>Continuous Outcome</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="reference/mist.html">mist</a></span>(</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="dt">y =</span> phenotypes[, <span class="st">"y_taupi"</span>],</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="dt">X =</span> phenotypes[, <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"x_cov"</span>, <span class="dv">0</span><span class="op">:</span><span class="dv">2</span>)],</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="dt">G =</span> genotypes,</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="dt">Z =</span> variants_info[, <span class="dv">1</span>, <span class="dt">drop =</span> <span class="ot">FALSE</span>]</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">)</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; [MiST] "y" seems to be "continuous", model is set to "continuous"!</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [MiST] Linear regression is ongoing ...</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; MiST: Mixed effects Score Test</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; ------------------------------</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; - Estimate:</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;   SubClusters Pi_hat CI_2.5 CI_97.5</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 1    cluster1  0.248 -0.389   0.885</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; - Statistics:</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt;   + Overall effect: </span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;     * P-value = 0.031</span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt;   + PI (mean effect):  </span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt;     * Score = 0.601</span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt;     * P-value = 0.438</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt;   + TAU (heterogeneous effect):  </span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt;     * Score = 1006.125</span></a>
+<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt;     * P-value = 0.011</span></a></code></pre></div>
+</div>
+<div id="binary-outcome" class="section level3">
+<h3 class="hasAnchor">
+<a href="#binary-outcome" class="anchor"></a>Binary Outcome</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/mist.html">mist</a></span>(</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="dt">y =</span> phenotypes[, <span class="st">"y_binary"</span>],</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="dt">X =</span> phenotypes[, <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"x_cov"</span>, <span class="dv">0</span><span class="op">:</span><span class="dv">2</span>)],</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="dt">G =</span> genotypes,</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">  <span class="dt">Z =</span> variants_info[, <span class="dv">1</span>, <span class="dt">drop =</span> <span class="ot">FALSE</span>]</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; [MiST] "y" seems to be "binary", model is set to "binary"!</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; [MiST] Logistic regression is ongoing ...</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; MiST: Mixed effects Score Test</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; ------------------------------</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; - Estimate:</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;   SubClusters Pi_hat CI_2.5 CI_97.5    OR</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; 1    cluster1  1.274   0.66   2.019 3.576</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; - Statistics:</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;   + Overall effect: </span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;     * P-value = 0</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;   + PI (mean effect):  </span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;     * Score = 17.527</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt;     * P-value = 0</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt;   + TAU (heterogeneous effect):  </span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt;     * Score = 5.4</span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt;     * P-value = 0.175</span></a></code></pre></div>
+</div>
 </div>
 </div>
   </div>
