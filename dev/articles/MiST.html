@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MiST • MiST</title>
+<title>MiST: *Mi*xed effects *S*core *T*est • MiST</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="MiST">
+<script src="../pkgdown.js"></script><meta property="og:title" content="MiST: *Mi*xed effects *S*core *T*est">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <meta name="robots" content="noindex">
@@ -74,11 +74,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>MiST</h1>
-            <h3 class="subtitle">Mixed effects Score Test</h3>
+      <h1>MiST: <em>Mi</em>xed effects <em>S</em>core <em>T</em>est</h1>
                         <h4 class="author">Jianping Sun, Yingye Zheng and Li Hsu</h4>
             
-            <h4 class="date">December 03, 2019</h4>
+            <h4 class="date">03 December 2019</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mcanouil/MiST/blob/master/vignettes/MiST.Rmd"><code>vignettes/MiST.Rmd</code></a></small>
       <div class="hidden name"><code>MiST.Rmd</code></div>
@@ -87,11 +86,6 @@
 
     
     
-<div id="mixed-effects-score-test" class="section level1">
-<h1 class="hasAnchor">
-<a href="#mixed-effects-score-test" class="anchor"></a><em>Mi</em>xed effects <em>S</em>core <em>T</em>est</h1>
-<!-- badges: start -->
-<p><a href="https://www.tidyverse.org/lifecycle/#stable"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: maturing"></a> <a href="https://github.com/mcanouil/MiST"><img src="https://img.shields.io/github/tag/mcanouil/MiST.svg?label=latest%20tag" alt="GitHub tag"></a> <a href="https://travis-ci.org/mcanouil/MiST"><img src="https://travis-ci.org/mcanouil/MiST.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/mcanouil/MiST"><img src="https://ci.appveyor.com/api/projects/status/github/mcanouil/MiST?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://codecov.io/gh/mcanouil/MiST"><img src="https://codecov.io/gh/mcanouil/MiST/branch/master/graph/badge.svg" alt="Coverage Status (codecov)"></a> <a href="https://cran.r-project.org/package=MiST"><img src="https://www.r-pkg.org/badges/version-ago/MiST" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/web/checks/check_results_MiST.html"><img src="https://cranchecks.info/badges/worst/MiST" alt="cran checks_worst"></a> <a href="https://cran.r-project.org/package=MiST"><img src="https://cranlogs.r-pkg.org/badges/MiST" alt="CRAN_Download_total"></a> <!--[![cran checks_summary](https://cranchecks.info/badges/summary/MiST)](https://cran.r-project.org/web/checks/check_results_MiST.html)--> <!--[![CRAN_Download_month](https://cranlogs.r-pkg.org/badges/MiST?color=brightgreen)](https://cran.r-project.org/package=MiST)--> <!--[![Coverage Status (coveralls)](https://coveralls.io/repos/github/mcanouil/MiST/badge.svg?branch=master)](https://coveralls.io/github/mcanouil/MiST?branch=master)--> <!-- badges: end --></p>
 <p>Test for association between a set of SNPS/genes and continuous or binary outcomes by including variant characteristic information and using (weighted) score statistics.</p>
 <p><strong>Note:</strong></p>
 <ul>
@@ -630,7 +624,6 @@
 </div>
 </div>
 </div>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -639,12 +632,8 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#mixed-effects-score-test"><em>Mi</em>xed effects <em>S</em>core <em>T</em>est</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#installation">Installation</a></li>
       <li><a href="#mist-in-action">MiST in Action</a></li>
-      </ul>
-</li>
       </ul>
 </div>
       </div>
