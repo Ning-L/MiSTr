@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mixed effects Score Test for continuous outcomes • MiST</title>
+<title>Mixed effects Score Test for continuous outcomes • MiSTr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
@@ -33,7 +33,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">MiST</a>
+        <a class="navbar-link" href="index.html">MiSTr</a>
         <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9000</span>
       </span>
     </div>
@@ -47,7 +47,7 @@
   </a>
 </li>
 <li>
-  <a href="articles/MiST.html">Get started</a>
+  <a href="articles/MiSTr.html">Get started</a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -75,9 +75,9 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="mixed-effects-score-test" class="section level1">
+<div id="mistr-mixed-effects-score-test" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#mixed-effects-score-test" class="anchor"></a><em>Mi</em>xed effects <em>S</em>core <em>T</em>est</h1></div>
+<a href="#mistr-mixed-effects-score-test" class="anchor"></a><em>MiSTr</em>: <em>Mi</em>xed effects <em>S</em>core <em>T</em>est</h1></div>
 <!-- badges: start -->
 
 <p>Test for association between a set of SNPS/genes and continuous or binary outcomes by including variant characteristic information and using (weighted) score statistics.</p>
@@ -90,19 +90,20 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Install MiST from CRAN:</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"MiST"</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Install MiSTr from CRAN:</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"MiSTr"</span>)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Or the the development version from GitHub:</span></a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># install.packages("remotes")</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"mcanouil/MiST"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-6" data-line-number="6">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"mcanouil/MiSTr"</span>)</a></code></pre></div>
 </div>
-<div id="mist-in-action" class="section level2">
+<div id="mistr-in-action" class="section level2">
 <h2 class="hasAnchor">
-<a href="#mist-in-action" class="anchor"></a>MiST in Action</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(MiST)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(mist_data)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/attach.html">attach</a></span>(mist_data)</a></code></pre></div>
+<a href="#mistr-in-action" class="anchor"></a>MiSTr in Action</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(MiSTr)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(mist_data)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/attach.html">attach</a></span>(mist_data)</a></code></pre></div>
 <div id="continuous-outcome" class="section level3">
 <h3 class="hasAnchor">
 <a href="#continuous-outcome" class="anchor"></a>Continuous Outcome</h3>
@@ -112,8 +113,8 @@
 <a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="dt">G =</span> genotypes,</a>
 <a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="dt">Z =</span> variants_info[, <span class="dv">1</span>, <span class="dt">drop =</span> <span class="ot">FALSE</span>]</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6">)</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; [MiST] "y" seems to be "continuous", model is set to "continuous"!</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [MiST] Linear regression is ongoing ...</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; [MiSTr] "y" seems to be "continuous", model is set to "continuous"!</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [MiSTr] Linear regression is ongoing ...</span></a>
 <a class="sourceLine" id="cb3-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(res)</a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; List of 2</span></a>
 <a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  $ estimate  :'data.frame':  1 obs. of  4 variables:</span></a>
@@ -130,8 +131,8 @@
 <a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt;  - attr(*, "class")= chr "mist"</span></a>
 <a class="sourceLine" id="cb3-23" data-line-number="23"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(res)</a>
 <a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; MiST: Mixed effects Score Test</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; ------------------------------</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; MiSTr: Mixed effects Score Test</span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; -------------------------------</span></a>
 <a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt; - Estimate:</span></a>
 <a class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt; </span></a>
@@ -158,8 +159,8 @@
 <a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="dt">G =</span> genotypes,</a>
 <a class="sourceLine" id="cb4-5" data-line-number="5">  <span class="dt">Z =</span> variants_info[, <span class="dv">1</span>, <span class="dt">drop =</span> <span class="ot">FALSE</span>]</a>
 <a class="sourceLine" id="cb4-6" data-line-number="6">)</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; [MiST] "y" seems to be "binary", model is set to "binary"!</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; [MiST] Logistic regression is ongoing ...</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; [MiSTr] "y" seems to be "binary", model is set to "binary"!</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; [MiSTr] Logistic regression is ongoing ...</span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(res)</a>
 <a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; List of 2</span></a>
 <a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  $ estimate  :'data.frame':  1 obs. of  5 variables:</span></a>
@@ -177,8 +178,8 @@
 <a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;  - attr(*, "class")= chr "mist"</span></a>
 <a class="sourceLine" id="cb4-24" data-line-number="24"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(res)</a>
 <a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; MiST: Mixed effects Score Test</span></a>
-<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt; ------------------------------</span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; MiSTr: Mixed effects Score Test</span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt; -------------------------------</span></a>
 <a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt; - Estimate:</span></a>
 <a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt; </span></a>
@@ -204,8 +205,6 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=MiST">https://​cloud.r-project.org/​package=MiST</a>
-</li>
 <li>Browse source code at <br><a href="https://github.com/mcanouil/MiST">https://​github.com/​mcanouil/​MiST</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/mcanouil/MiST/issues">https://​github.com/​mcanouil/​MiST/​issues</a>
@@ -239,13 +238,13 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#stable"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://github.com/mcanouil/MiST"><img src="https://img.shields.io/github/tag/mcanouil/MiST.svg?label=latest%20tag" alt="GitHub tag"></a></li>
-<li><a href="https://travis-ci.org/mcanouil/MiST"><img src="https://travis-ci.org/mcanouil/MiST.svg?branch=master" alt="Travis-CI Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/mcanouil/MiST"><img src="https://ci.appveyor.com/api/projects/status/github/mcanouil/MiST?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
-<li><a href="https://codecov.io/gh/mcanouil/MiST"><img src="https://codecov.io/gh/mcanouil/MiST/branch/master/graph/badge.svg" alt="Coverage Status (codecov)"></a></li>
-<li><a href="https://cran.r-project.org/package=MiST"><img src="https://www.r-pkg.org/badges/version-ago/MiST" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://cran.r-project.org/web/checks/check_results_MiST.html"><img src="https://cranchecks.info/badges/worst/MiST" alt="cran checks_worst"></a></li>
-<li><a href="https://cran.r-project.org/package=MiST"><img src="https://cranlogs.r-pkg.org/badges/MiST" alt="CRAN_Download_total"></a></li>
+<li><a href="https://github.com/mcanouil/MiSTr"><img src="https://img.shields.io/github/tag/mcanouil/MiSTr.svg?label=latest%20tag" alt="GitHub tag"></a></li>
+<li><a href="https://travis-ci.org/mcanouil/MiSTr"><img src="https://travis-ci.org/mcanouil/MiSTr.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/mcanouil/MiSTr"><img src="https://ci.appveyor.com/api/projects/status/github/mcanouil/MiSTr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
+<li><a href="https://codecov.io/gh/mcanouil/MiSTr"><img src="https://codecov.io/gh/mcanouil/MiSTr/branch/master/graph/badge.svg" alt="Coverage Status (codecov)"></a></li>
+<li><a href="https://cran.r-project.org/package=MiSTr"><img src="https://www.r-pkg.org/badges/version-ago/MiSTr" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/web/checks/check_results_MiSTr.html"><img src="https://cranchecks.info/badges/worst/MiSTr" alt="cran checks_worst"></a></li>
+<li><a href="https://cran.r-project.org/package=MiSTr"><img src="https://cranlogs.r-pkg.org/badges/MiSTr" alt="CRAN_Download_total"></a></li>
 </ul>
 </div>
 </div>
