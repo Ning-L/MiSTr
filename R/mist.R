@@ -227,7 +227,7 @@ mist_logit<- function(y, X, G, Z, method = "liu", weight.beta = NULL, maf = NULL
   } else {
     Mat <- 0.5 * sqrt(W) %*% t(G) %*% P02 %*% G %*% sqrt(W)
   }
-  lambda <- eigen(Mat, symmetric = TRUE)$values
+  lambda <- eigen(Mat, symmetric = TRUE, only.values = TRUE)$values
 
   if (method == "davies") {
     p.value.S.tau <- tryCatch(
@@ -330,7 +330,7 @@ mist_linear <- function(y, X, G, Z, method = "liu", weight.beta = NULL, maf = NU
     P1.G <- P1 %*% G %*% sqrt(W)
   }
   Mat <- (hat.sigma2) * t(P1.G) %*% P1.G
-  lambda <- eigen(Mat, symmetric = TRUE)$values
+  lambda <- eigen(Mat, symmetric = TRUE, only.values = TRUE)$values
 
   if (method == "davies") {
     p.value.S.tau <- tryCatch(
